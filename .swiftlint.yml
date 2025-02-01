@@ -1,0 +1,11 @@
+disabled_rules:
+  - trailing_whitespace
+line_length:
+  warning: 140
+  error: 200
+identifier_name:
+  min_length:
+    warning: 2
+excluded:
+  - Pods
+  - .build
