@@ -1,0 +1,60 @@
+name: iOS
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          if [[ -d "/Applications/Xcode_16.2.app" ]]; then
+            sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          else
+            echo "Xcode_16.2.app not found; using default Xcode.app" >&2
+            ls -la /Applications/ | grep -i xcode || true
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
+          xcodebuild -version
+
+      - name: Prepare Xcode & iOS Simulator runtime
+        run: |
+          chmod +x .github/scripts/prepare-ios-ci.sh
+          .github/scripts/prepare-ios-ci.sh
+        timeout-minutes: 50
+
+      - name: Build and Test
+        env:
+          IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+        run: |
+          set -euo pipefail
+          chmod +x .github/scripts/ensure-ci-simulator.sh
+          chmod +x .github/scripts/xcode-sim-destination.sh
+          echo "=== simctl: iOS runtimes ==="
+          xcrun simctl list runtimes | grep -i ios || true
+          SIM_UDID="$(.github/scripts/ensure-ci-simulator.sh)"
+          DEST="$(.github/scripts/xcode-sim-destination.sh ThenToday.xcodeproj ThenToday "${SIM_UDID}")"
+          echo "Destination: ${DEST}"
+          xcodebuild test \
+            -project ThenToday.xcodeproj \
+            -scheme ThenToday \
+            -sdk iphonesimulator \
+            -destination "${DEST}" \
+            -quiet \
+            -enableCodeCoverage YES \
+            -resultBundlePath TestResults.xcresult \
+            EXCLUDED_ARCHS=x86_64 \
+            ONLY_ACTIVE_ARCH=YES
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults.xcresult
+          if-no-files-found: ignore
