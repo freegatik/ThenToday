@@ -1,0 +1,215 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "dateInformationAlertMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an error translating the received information"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла ошибка перевода полученной информации"
+          }
+        }
+      }
+    },
+    "dateInformationAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information translation error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка перевода информации"
+          }
+        }
+      }
+    },
+    "datePickerAlertMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred while trying to retrieve information"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла ошибка при попытке получения информации"
+          }
+        }
+      }
+    },
+    "datePickerAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error receiving information"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка получения информации"
+          }
+        }
+      }
+    },
+    "fetchLanguagesAlertMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred while trying to get a list of languages ​​available for translation"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла ошибка при попытке получения списка доступных для перевода языков"
+          }
+        }
+      }
+    },
+    "fetchLanguagesAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error getting list of available languages"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка получения списка доступных языков"
+          }
+        }
+      }
+    },
+    "findOut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find out"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узнать"
+          }
+        }
+      }
+    },
+    "thenToday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ThenToday"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тогда и сегодня"
+          }
+        }
+      }
+    },
+    "common_ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "error_url_invalid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The request address is invalid." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Некорректный адрес запроса." } }
+      }
+    },
+    "error_request_failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The server did not respond. Try again." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Сервер не ответил. Попробуйте ещё раз." } }
+      }
+    },
+    "error_no_data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No data was returned." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Данные не получены." } }
+      }
+    },
+    "error_decoding" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not read the server response." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Не удалось разобрать ответ сервера." } }
+      }
+    },
+    "error_cancelled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The request was cancelled." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Запрос отменён." } }
+      }
+    },
+    "error_offline" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No internet connection." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Нет подключения к интернету." } }
+      }
+    },
+    "error_missing_api_keys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "API keys are missing. Add UNSPLASH_ACCESS_KEY and YANDEX_API_KEY in the Run scheme (Environment Variables) or Info.plist." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Не заданы API-ключи. Добавьте UNSPLASH_ACCESS_KEY и YANDEX_API_KEY в схему запуска (переменные окружения) или в Info.plist." } }
+      }
+    },
+    "accessibility_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Загрузка" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
