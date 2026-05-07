@@ -3,7 +3,7 @@ set -euo pipefail
 
 export IPHONEOS_DEPLOYMENT_TARGET="${IPHONEOS_DEPLOYMENT_TARGET:-16.0}"
 
-python3 <<'PY'
+UDID="$(python3 <<'PY'
 import json, os, subprocess, sys, time
 from itertools import zip_longest
 
@@ -95,3 +95,10 @@ for dt in DEVICE_TYPES:
 print("error: simctl create failed for all device types", file=sys.stderr)
 raise SystemExit(1)
 PY
+)"
+
+# Boot (if needed) and wait until the simulator is fully booted; avoids UI test flakes:
+# "Timed out waiting for AX loaded notification" on GitHub-hosted macOS.
+xcrun simctl bootstatus "${UDID}" -b
+
+printf '%s\n' "${UDID}"

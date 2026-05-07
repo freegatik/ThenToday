@@ -45,6 +45,7 @@ jobs:
             -scheme ThenToday \
             -sdk iphonesimulator \
             -destination "${DEST}" \
+            -maximum-parallel-testing-workers 1 \
             -quiet \
             -enableCodeCoverage YES \
             -resultBundlePath TestResults.xcresult \
