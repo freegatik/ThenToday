@@ -44,6 +44,7 @@
 		BF0D0D0D0D0D0D0D0D0D0D0D /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E0E0E0E0E0E0E0E0E0E0E /* AppDependencies.swift */; };
 		BF0F0F0F0F0F0F0F0F0F0F0F /* LanguageMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1010101010101010101010 /* LanguageMappingTests.swift */; };
 		BF2B2B2B2B2B2B2B2B2B2B2B /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A2A2A2A2A2A2A2A2A2A2A /* NetworkingTests.swift */; };
+		BF3B3B3B3B3B3B3B3B3B3B3B /* ExtendedCoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3A3A3A3A3A3A3A3A3A3A /* ExtendedCoverageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		BF1111111111111111111111 /* ThenTodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThenTodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1010101010101010101010 /* LanguageMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMappingTests.swift; sourceTree = "<group>"; };
 		BF2A2A2A2A2A2A2A2A2A2A2A /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
+		BF3A3A3A3A3A3A3A3A3A3A3A /* ExtendedCoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedCoverageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 			children = (
 				BF1010101010101010101010 /* LanguageMappingTests.swift */,
 				BF2A2A2A2A2A2A2A2A2A2A2A /* NetworkingTests.swift */,
+				BF3A3A3A3A3A3A3A3A3A3A3A /* ExtendedCoverageTests.swift */,
 			);
 			path = ThenTodayTests;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			files = (
 				BF0F0F0F0F0F0F0F0F0F0F0F /* LanguageMappingTests.swift in Sources */,
 				BF2B2B2B2B2B2B2B2B2B2B2B /* NetworkingTests.swift in Sources */,
+				BF3B3B3B3B3B3B3B3B3B3B3B /* ExtendedCoverageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
