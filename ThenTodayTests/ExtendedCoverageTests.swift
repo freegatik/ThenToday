@@ -324,3 +324,51 @@ final class LiveDayExplorationServiceTests: XCTestCase {
         XCTAssertNil(result.image)
     }
 }
+
+// MARK: - CustomError descriptions
+
+final class CustomErrorDescriptionTests: XCTestCase {
+    func testAllCasesHaveNonEmptyDescriptions() {
+        let all: [CustomError] = [
+            .urlNotValid, .requestFailed, .noData, .decodingError,
+            .cancelled, .offline, .missingAPIConfiguration
+        ]
+        for error in all {
+            let description = error.errorDescription
+            XCTAssertNotNil(description, "\(error)")
+            XCTAssertFalse(description?.isEmpty ?? true)
+        }
+    }
+}
+
+// MARK: - AlertManager
+
+@MainActor
+final class AlertManagerTests: XCTestCase {
+    func testPresentAlertShowsAlertController() {
+        let vc = UIViewController()
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 393, height: 852))
+        window.rootViewController = vc
+        window.isHidden = false
+        window.makeKeyAndVisible()
+        vc.loadViewIfNeeded()
+
+        AlertManager.presentAlert(on: vc, title: "T", message: "M", okButtonTitle: "OK")
+
+        let presented = vc.presentedViewController
+        XCTAssertTrue(presented is UIAlertController)
+        let alert = presented as? UIAlertController
+        XCTAssertEqual(alert?.title, "T")
+        XCTAssertEqual(alert?.message, "M")
+    }
+}
+
+// MARK: - Api.Method.put
+
+extension ApiTests {
+    func testMethodPutRawValue() {
+        struct Box: Encodable { let x = 1 }
+        let method = Api.Method.put(request: Box())
+        XCTAssertEqual(method.rawValue, "PUT")
+    }
+}

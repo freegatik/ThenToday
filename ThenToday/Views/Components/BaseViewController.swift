@@ -29,6 +29,7 @@ extension BaseViewController {
         let customBackButton = UIButton(type: .custom)
         customBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         customBackButton.tintColor = .accent
+        customBackButton.accessibilityIdentifier = "navBackButton"
         customBackButton.addTarget(self, action: #selector(customBackButtonTapped), for: .touchUpInside)
         
         let customBackBarButtonItem = UIBarButtonItem(customView: customBackButton)

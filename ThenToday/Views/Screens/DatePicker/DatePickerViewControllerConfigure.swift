@@ -42,6 +42,7 @@ extension DatePickerViewController {
         self.datePicker.preferredDatePickerStyle = .wheels
         self.datePicker.isAccessibilityElement = true
         self.datePicker.accessibilityLabel = NSLocalizedString("thenToday", comment: "")
+        self.datePicker.accessibilityIdentifier = "datePicker"
         
         self.datePicker.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -82,10 +83,6 @@ extension DatePickerViewController {
         
         static let emptyString: String = ""
         static let emptyImage = UIImage(systemName: "eye.slash")
-        
-        static func titleSizeValue() -> CGFloat {
-            return screenWidth * 0.1
-        }
         
         static func offsetValue() -> CGFloat {
             return screenHeight * 0.02

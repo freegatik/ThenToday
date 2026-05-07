@@ -39,6 +39,8 @@ extension DateInformationViewController {
         self.informationLabel.font = .systemFont(ofSize: Constants.informationSizeValue(), weight: .medium)
         self.informationLabel.textAlignment = .center
         self.informationLabel.textColor = .textPrimary
+        self.informationLabel.isAccessibilityElement = true
+        self.informationLabel.accessibilityIdentifier = "factLabel"
         
         self.informationLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(Constants.insetValue())
@@ -49,6 +51,7 @@ extension DateInformationViewController {
     func configureLanguagePicker() {
         self.languagePicker.delegate = self
         self.languagePicker.dataSource = self
+        self.languagePicker.accessibilityIdentifier = "languagePicker"
         
         self.languagePicker.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(Constants.insetValue())

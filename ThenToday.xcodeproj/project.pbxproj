@@ -45,6 +45,8 @@
 		BF0F0F0F0F0F0F0F0F0F0F0F /* LanguageMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1010101010101010101010 /* LanguageMappingTests.swift */; };
 		BF2B2B2B2B2B2B2B2B2B2B2B /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A2A2A2A2A2A2A2A2A2A2A /* NetworkingTests.swift */; };
 		BF3B3B3B3B3B3B3B3B3B3B3B /* ExtendedCoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3A3A3A3A3A3A3A3A3A3A /* ExtendedCoverageTests.swift */; };
+		E1AAAA010000010000020005 /* UITestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAAA010000010000020004 /* UITestingSupport.swift */; };
+		E1AAAA010000010000020003 /* ThenTodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAAA010000010000020002 /* ThenTodayUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,9 @@
 		BF1010101010101010101010 /* LanguageMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMappingTests.swift; sourceTree = "<group>"; };
 		BF2A2A2A2A2A2A2A2A2A2A2A /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		BF3A3A3A3A3A3A3A3A3A3A3A /* ExtendedCoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedCoverageTests.swift; sourceTree = "<group>"; };
+		E1AAAA010000010000020001 /* ThenTodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThenTodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1AAAA010000010000020002 /* ThenTodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenTodayUITests.swift; sourceTree = "<group>"; };
+		E1AAAA010000010000020004 /* UITestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingSupport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BF1A1A1A1A1A1A1A1A1A1A1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AAAA010000010000020008 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,6 +205,7 @@
 			children = (
 				FC42D60B2C5E5EB800650093 /* ThenToday */,
 				BF1818181818181818181818 /* ThenTodayTests */,
+				E1AAAA01000001000002000F /* ThenTodayUITests */,
 				FC42D60A2C5E5EB800650093 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -202,6 +215,7 @@
 			children = (
 				FC42D6092C5E5EB800650093 /* ThenToday.app */,
 				BF1111111111111111111111 /* ThenTodayTests.xctest */,
+				E1AAAA010000010000020001 /* ThenTodayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +239,7 @@
 				FC42D60C2C5E5EB800650093 /* AppDelegate.swift */,
 				FC42D60E2C5E5EB800650093 /* SceneDelegate.swift */,
 				BF0E0E0E0E0E0E0E0E0E0E0E /* AppDependencies.swift */,
+				E1AAAA010000010000020004 /* UITestingSupport.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -340,6 +355,14 @@
 			path = ThenTodayTests;
 			sourceTree = "<group>";
 		};
+		E1AAAA01000001000002000F /* ThenTodayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E1AAAA010000010000020002 /* ThenTodayUITests.swift */,
+			);
+			path = ThenTodayUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,6 +404,24 @@
 			productReference = BF1111111111111111111111 /* ThenTodayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E1AAAA010000010000020006 /* ThenTodayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AAAA01000001000002000C /* Build configuration list for PBXNativeTarget "ThenTodayUITests" */;
+			buildPhases = (
+				E1AAAA010000010000020007 /* Sources */,
+				E1AAAA010000010000020008 /* Frameworks */,
+				E1AAAA010000010000020009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1AAAA01000001000002000B /* PBXTargetDependency */,
+			);
+			name = ThenTodayUITests;
+			productName = ThenTodayUITests;
+			productReference = E1AAAA010000010000020001 /* ThenTodayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 
 /* End PBXNativeTarget section */
 
@@ -396,6 +437,10 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					BF2323232323232323232323 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = FC42D6082C5E5EB800650093;
+					};
+					E1AAAA010000010000020006 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = FC42D6082C5E5EB800650093;
 					};
@@ -420,10 +465,18 @@
 			targets = (
 				FC42D6082C5E5EB800650093 /* ThenToday */,
 				BF2323232323232323232323 /* ThenTodayTests */,
+				E1AAAA010000010000020006 /* ThenTodayUITests */,
 			);
 		};
 /* Begin PBXContainerItemProxy section */
 		BF2020202020202020202020 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC42D6012C5E5EB700650093 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC42D6082C5E5EB800650093;
+			remoteInfo = ThenToday;
+		};
+		E1AAAA01000001000002000A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FC42D6012C5E5EB700650093 /* Project object */;
 			proxyType = 1;
@@ -437,6 +490,11 @@
 			isa = PBXTargetDependency;
 			target = FC42D6082C5E5EB800650093 /* ThenToday */;
 			targetProxy = BF2020202020202020202020 /* PBXContainerItemProxy */;
+		};
+		E1AAAA01000001000002000B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC42D6082C5E5EB800650093 /* ThenToday */;
+			targetProxy = E1AAAA01000001000002000A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -460,6 +518,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1AAAA010000010000020009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -468,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0101010101010101010101 /* AppSecrets.swift in Sources */,
+				E1AAAA010000010000020005 /* UITestingSupport.swift in Sources */,
 				BF0303030303030303030303 /* URLSessionConfiguration+App.swift in Sources */,
 				BF0505050505050505050505 /* LanguageMapping.swift in Sources */,
 				BF0707070707070707070707 /* YandexTranslateClient.swift in Sources */,
@@ -508,6 +574,14 @@
 				BF0F0F0F0F0F0F0F0F0F0F0F /* LanguageMappingTests.swift in Sources */,
 				BF2B2B2B2B2B2B2B2B2B2B2B /* NetworkingTests.swift in Sources */,
 				BF3B3B3B3B3B3B3B3B3B3B3B /* ExtendedCoverageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AAAA010000010000020007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AAAA010000010000020003 /* ThenTodayUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +819,50 @@
 			};
 			name = Release;
 		};
+		E1AAAA01000001000002000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antonsolovev.thentoday.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ThenToday;
+			};
+			name = Debug;
+		};
+		E1AAAA01000001000002000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antonsolovev.thentoday.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ThenToday;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -771,6 +889,15 @@
 			buildConfigurations = (
 				BF2525252525252525252525 /* Debug */,
 				BF2626262626262626262626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AAAA01000001000002000C /* Build configuration list for PBXNativeTarget "ThenTodayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AAAA01000001000002000D /* Debug */,
+				E1AAAA01000001000002000E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

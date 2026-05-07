@@ -45,6 +45,7 @@ extension CustomButton {
         isAccessibilityElement = true
         accessibilityTraits = [.button]
         accessibilityLabel = NSLocalizedString("findOut", comment: "")
+        accessibilityIdentifier = "findOutButton"
     }
 }
 
