@@ -99,6 +99,8 @@ PY
 
 # Boot (if needed) and wait until the simulator is fully booted; avoids UI test flakes:
 # "Timed out waiting for AX loaded notification" on GitHub-hosted macOS.
-xcrun simctl bootstatus "${UDID}" -b
+# bootstatus prints progress (and a trailing UDID line) to stdout — keep it off stdout so
+# SIM_UDID="$(this script)" stays a single UUID for xcodebuild -destination id=...
+xcrun simctl bootstatus "${UDID}" -b >&2
 
 printf '%s\n' "${UDID}"
