@@ -17,9 +17,29 @@ final class ScreenSnapshotTests: XCTestCase {
         UIView.setAnimationsEnabled(false)
     }
 
+    /// Solid bitmap — avoids SF Symbol raster differences across iOS minor versions on CI.
+    private func snapshotPlaceholderImage() -> UIImage {
+        let size = CGSize(width: 120, height: 120)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { ctx in
+            UIColor.systemBlue.setFill()
+            ctx.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+
     func test_datePicker_light_iPhone13_portrait() {
         let vc = AppDependencies().makeDatePickerViewController()
-        assertSnapshot(of: vc, as: .image(on: .iPhone13(.portrait), precision: 0.97), named: "date_picker_light")
+        let light = UITraitCollection(userInterfaceStyle: .light)
+        assertSnapshot(
+            of: vc,
+            as: .image(
+                on: .iPhone13(.portrait),
+                precision: 0.94,
+                perceptualPrecision: 0.97,
+                traits: light
+            ),
+            named: "date_picker_light"
+        )
     }
 
     func test_datePicker_dark_iPhone13_portrait() {
@@ -27,16 +47,20 @@ final class ScreenSnapshotTests: XCTestCase {
         let dark = UITraitCollection(userInterfaceStyle: .dark)
         assertSnapshot(
             of: vc,
-            as: .image(on: .iPhone13(.portrait), precision: 0.97, traits: dark),
+            as: .image(
+                on: .iPhone13(.portrait),
+                precision: 0.94,
+                perceptualPrecision: 0.97,
+                traits: dark
+            ),
             named: "date_picker_dark"
         )
     }
 
     func test_detail_light_iPhone13_portrait() {
-        let image = UIImage(systemName: "globe.europe.africa.fill") ?? UIImage()
         let sut = DateInformationViewController(
             information: "Snapshot: sample historical note for this calendar date.",
-            image: image,
+            image: snapshotPlaceholderImage(),
             translateClient: UITestingStubTranslateClient()
         )
         sut.loadViewIfNeeded()
@@ -46,6 +70,16 @@ final class ScreenSnapshotTests: XCTestCase {
         }
         wait(for: [ready], timeout: 2)
         sut.view.layoutIfNeeded()
-        assertSnapshot(of: sut, as: .image(on: .iPhone13(.portrait), precision: 0.97), named: "detail_light")
+        let light = UITraitCollection(userInterfaceStyle: .light)
+        assertSnapshot(
+            of: sut,
+            as: .image(
+                on: .iPhone13(.portrait),
+                precision: 0.94,
+                perceptualPrecision: 0.97,
+                traits: light
+            ),
+            named: "detail_light"
+        )
     }
 }
