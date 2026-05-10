@@ -55,8 +55,13 @@ final class NetworkManager {
             throw CustomError.requestFailed
         }
 
-        if resultType == String.self, let string = String(data: data, encoding: .utf8) {
-            return string as! T
+        if resultType == String.self {
+            guard let string = String(data: data, encoding: .utf8),
+                  let value = string as? T
+            else {
+                throw CustomError.decodingError
+            }
+            return value
         }
 
         do {

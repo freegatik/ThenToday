@@ -39,9 +39,13 @@ enum Api {
     
     var method: Method {
         switch self {
-        case .date, .photo:                                     return .get
-        case .translate(let text, let targetLanguage, _):       return .post(request: TranslateRequest(text: text, targetLanguage: targetLanguage))
-        case .languages:                                        return .post(request: EmptyRequest())
+        case .date, .photo:
+            return .get
+        case .translate(let text, let targetLanguage, _):
+            let body = TranslateRequest(text: text, targetLanguage: targetLanguage)
+            return .post(request: body)
+        case .languages:
+            return .post(request: EmptyRequest())
         }
     }
     

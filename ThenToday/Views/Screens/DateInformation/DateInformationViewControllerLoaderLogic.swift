@@ -34,4 +34,3 @@ extension DateInformationViewController {
         loader = nil
     }
 }
-

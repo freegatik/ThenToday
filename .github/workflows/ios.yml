@@ -5,9 +5,32 @@ on:
     branches: [main, master]
   pull_request:
 
+env:
+  IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+  COVERAGE_MIN_LINE_PERCENT: "82"
+
 jobs:
-  test:
+  lint:
+    name: Lint (SwiftLint)
     runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SwiftLint
+        run: |
+          if command -v swiftlint >/dev/null 2>&1; then
+            swiftlint version
+          else
+            brew install swiftlint
+          fi
+
+      - name: SwiftLint
+        run: swiftlint lint --strict
+
+  build:
+    name: Build (iOS Simulator)
+    runs-on: macos-15
+    needs: lint
     steps:
       - uses: actions/checkout@v4
 
@@ -22,15 +45,49 @@ jobs:
           fi
           xcodebuild -version
 
-      - name: Prepare Xcode & iOS Simulator runtime
+      - name: Prepare Xcode and iOS Simulator runtime
         run: |
           chmod +x .github/scripts/prepare-ios-ci.sh
           .github/scripts/prepare-ios-ci.sh
         timeout-minutes: 50
 
-      - name: Build and Test
-        env:
-          IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+      - name: Build
+        run: |
+          set -euo pipefail
+          xcodebuild build \
+            -project ThenToday.xcodeproj \
+            -scheme ThenToday \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -quiet \
+            EXCLUDED_ARCHS=x86_64 \
+            ONLY_ACTIVE_ARCH=YES
+
+  test:
+    name: Test (iOS Simulator)
+    runs-on: macos-15
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          if [[ -d "/Applications/Xcode_16.2.app" ]]; then
+            sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          else
+            echo "Xcode_16.2.app not found; using default Xcode.app" >&2
+            ls -la /Applications/ | grep -i xcode || true
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
+          xcodebuild -version
+
+      - name: Prepare Xcode and iOS Simulator runtime
+        run: |
+          chmod +x .github/scripts/prepare-ios-ci.sh
+          .github/scripts/prepare-ios-ci.sh
+        timeout-minutes: 50
+
+      - name: Run tests
         run: |
           set -euo pipefail
           chmod +x .github/scripts/ensure-ci-simulator.sh
@@ -52,7 +109,48 @@ jobs:
             EXCLUDED_ARCHS=x86_64 \
             ONLY_ACTIVE_ARCH=YES
 
-      - name: Upload test results
+      - name: Export code coverage (xcresult → xccov)
+        if: success()
+        run: |
+          set -euo pipefail
+          test -d TestResults.xcresult
+          xcrun xccov view --report --json TestResults.xcresult > coverage-report.json
+          xcrun xccov view --report TestResults.xcresult | tee coverage-summary.txt
+          {
+            echo '### Code coverage (lines)'
+            echo ''
+            echo 'Full JSON: artifact **coverage-reports** → `coverage-report.json`.'
+            echo ''
+            echo '```text'
+            cat coverage-summary.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Coverage gate (ThenToday.app line %)
+        if: success()
+        run: python3 .github/scripts/coverage_gate.py coverage-report.json
+
+      - name: Upload coverage (Codecov)
+        if: success()
+        continue-on-error: true
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage-report.json
+          name: then-today-ios
+          fail_ci_if_error: false
+
+      - name: Upload coverage reports
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: |
+            coverage-report.json
+            coverage-summary.txt
+          if-no-files-found: ignore
+
+      - name: Upload test results (.xcresult)
         if: always()
         uses: actions/upload-artifact@v4
         with:

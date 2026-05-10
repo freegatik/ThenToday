@@ -49,7 +49,9 @@ private final class FailingURLProtocol: URLProtocol {
 
 private enum TestPNG {
     /// Valid 1×1 transparent PNG — decodes with `UIImage`.
-    static let bytes = Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==")!
+    static let bytes = Data(base64Encoded:
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+    )!
 }
 
 // MARK: - CustomError + URLError

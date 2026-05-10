@@ -15,7 +15,7 @@ class AlertManager {
         message: String,
         okButtonTitle: String,
         okActionHandler: ((UIAlertAction) -> Void)? = nil
-    ){
+    ) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: okButtonTitle, style: .default, handler: okActionHandler)

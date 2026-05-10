@@ -13,6 +13,10 @@ extension DatePickerViewController {
     func configureTitleImage() {
         self.titleImage.image = UIImage(systemName: "questionmark")
         self.titleImage.tintColor = .accent
+        self.titleImage.isAccessibilityElement = true
+        self.titleImage.accessibilityTraits = [.image]
+        self.titleImage.accessibilityLabel = NSLocalizedString("thenToday", comment: "")
+        self.titleImage.accessibilityIdentifier = "titleMarkImage"
         
         self.titleImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -30,6 +34,7 @@ extension DatePickerViewController {
         self.titleLabel.textColor = .textPrimary
         self.titleLabel.isAccessibilityElement = true
         self.titleLabel.accessibilityTraits = [.header]
+        self.titleLabel.accessibilityIdentifier = "mainTitle"
         
         self.titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
